@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="contents p-5">
+    <h1 class="text-center mb-5">Ajouter un livre à ma bibliotèque</h1>
+    <div class="row justify-content-center">
+      <div class="col-6">
+        <%= simple_form_for(@book) do |f| %>
+          <div class="row">
+            <div class="col-6">
+              <%= f.input :title, label:"Titre du livre", placeholder: "Écrivez le titre de votre livre username s’il vou plaît" %>
+            </div>
+            <div class="col-6">
+              <%= f.input :author, label:"Auteur", placeholder: "Écrivez l’auteur du livre" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <%= f.input :category, collection: ['SF, Fantasy', 'suspense','Histoire', 'Romance', 'Litterature', 'Thêatre'], label: "Catégorie", selected: "Romance" %>
+            </div>
+            <div class="col-6">
+              <%= f.input :delivery_price, label:"Prix  de l’envoi", placeholder:"€" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <%= f.input :availability, label: "Disponible" %>
+            </div>
+          </div>
+          <%= f.input :description, label: "Petit Résumen", :as => :text, :input_html => { 'rows' => 5, 'cols' => 10 } %>
+          <%= f.input :photos, label:"Photo(s)", as: :file, input_html: { multiple: true } %>
+          <%= f.submit "Ajouter un livre", class: "btn btn-pink btn-lg w-100" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

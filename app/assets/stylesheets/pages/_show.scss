@@ -1,0 +1,14 @@
+h1 {
+  color: $pink;
+}
+.simple_form {
+  .form-control:focus {
+    border-color: #ffc2d1;
+    box-shadow: 0 0 0 0.25rem rgba(234, 129, 216, 0.2);
+  }
+
+  .form-select:focus {
+    border-color: #ffc2d1;
+    box-shadow: 0 0 0 0.25rem rgba(234, 129, 216, 0.2);
+  }
+}
