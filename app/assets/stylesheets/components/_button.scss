@@ -1,4 +1,11 @@
 .btn-pink {
-  background-color: $pink;
+  background-color: $pink-dark;
   color: #fff;
+  :hover {
+    background-color: $pink !important;
+  }
+}
+
+.pink {
+  color: $pink;
 }

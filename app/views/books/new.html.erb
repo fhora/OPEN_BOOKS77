@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" id="co">
   <div class="contents p-5">
     <h1 class="text-center mb-5">Ajouter un livre à ma bibliotèque</h1>
     <div class="row justify-content-center">
@@ -14,7 +14,7 @@
           </div>
           <div class="row">
             <div class="col-6">
-              <%= f.input :category, collection: ['SF, Fantasy', 'suspense','Histoire', 'Romance', 'Litterature', 'Thêatre'], label: "Catégorie", selected: "Romance" %>
+              <%= f.input :category, collection: ['SF, Fantasy', 'Suspense','Histoire', 'Romance', 'Litterature', 'Thêatre', 'Best Sellers'], label: "Catégorie", selected: "Romance" %>
             </div>
             <div class="col-6">
               <%= f.input :delivery_price, label:"Prix  de l’envoi", placeholder:"€" %>
