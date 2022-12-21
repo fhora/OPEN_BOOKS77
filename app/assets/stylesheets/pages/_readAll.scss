@@ -5,4 +5,11 @@
   .stretched-link {
     color: $pink !important;
   }
+  + .container {
+    figure {
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+    }
+  }
 }

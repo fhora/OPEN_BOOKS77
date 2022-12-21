@@ -11,7 +11,7 @@
       <% @books.each do |book| %>
         <div class="col-md-6">
           <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-            <div class="col p-4 d-flex flex-column position-static">
+            <div class="col-7 p-4 d-flex flex-column position-static">
               <strong class="d-inline-block mb-2 text-primary"><%= book.category %></strong>
               <h3 class="mb-0"><%= book.title %></h3>
               <div class="mb-1 text-muted"><%= book.author %></div>
@@ -20,13 +20,14 @@
                 Voir le détail <i class="fa-solid fa-arrow-right"></i>
               <% end %>
             </div>
-            <div class="col-auto d-none d-lg-block">
-              <%= cl_image_tag("rcvctkza4utqndivyzxg", width: 400, height:300, crop: :fill) %>
-              <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+            <div class="col-5 d-none d-lg-block">
+              <figure class="d-flex justify-content-center align-items-center">
+                <%= cl_image_tag book.photo.key, class: "h-100", crop: :fill, draggable: false %>
+              </figure>
             </div>
           </div>
         </div>
-       <% end %>
+      <% end %>
     </div>
   </div>
 </div>
