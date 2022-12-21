@@ -26,7 +26,7 @@
             </div>
           </div>
           <%= f.input :description, label: "Petit Résumen", :as => :text, :input_html => { 'rows' => 5, 'cols' => 10 } %>
-          <%= f.input :photos, label:"Photo(s)", as: :file, input_html: { multiple: true } %>
+          <%= f.input :photo, as: :file %>
           <%= f.submit "Ajouter un livre", class: "btn btn-pink btn-lg w-100" %>
         <% end %>
       </div>

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  get 'reservations/new'
-  get 'reservations/create'
+  # get 'reservations/new'
+  # get 'reservations/create'
+  # get 'reservations/show'
   devise_for :users
   root to: "pages#home"
 

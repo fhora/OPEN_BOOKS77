@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:show]
+
   def index
     @books = Book.all
   end
@@ -15,6 +15,7 @@ class BooksController < ApplicationController
   end
 
   def show
+    @book = Book.find(params[:id])
   end
 
   private
@@ -23,7 +24,4 @@ class BooksController < ApplicationController
     params.require(:book).permit(:title, :author, :category, :photo, :description, :delivery_price)
   end
 
-  def set_book
-    @book = Book.find(params[:id])
-  end
 end
