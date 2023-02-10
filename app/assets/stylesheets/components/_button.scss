@@ -1,11 +1,15 @@
-.btn-pink {
-  background-color: $pink-dark;
+.btn-blue {
+  background-color: $blue;
   color: #fff;
   :hover {
-    background-color: $pink !important;
+    background-color: $blue-light !important;
   }
 }
 
-.pink {
-  color: $pink;
+.blue-light {
+  color: $blue-light;
+}
+
+.bg-blue-light {
+  background-color: $blue-light;
 }

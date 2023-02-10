@@ -1,7 +1,13 @@
 class BooksController < ApplicationController
+  before_action :set_book, only: %i[show edit update destroy]
 
   def index
-    @books = Book.all
+    if params[:query].present?
+      sql_query = "title ILIKE :query OR description ILIKE :query OR category ILIKE :query"
+      @books = Book.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @books = Book.all
+    end
   end
 
   def new
@@ -24,8 +30,22 @@ class BooksController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    @book.update(book_params)
+    redirect_to book_path(@book)
+  end
+
   def show
-    @book = Book.find(params[:id])
+    @reservation = Reservation.new
+    # chaque reservation est associé à la show dun livre
+  end
+
+  def destroy
+    @book.destroy
+    redirect_to book_path, status: :see_other
   end
 
   private
@@ -34,4 +54,7 @@ class BooksController < ApplicationController
     params.require(:book).permit(:title, :author, :category, :photo, :description, :delivery_price)
   end
 
+  def set_book
+    @book = Book.find(params[:id])
+  end
 end

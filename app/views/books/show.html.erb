@@ -1,8 +1,54 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
-<p><%= @book.title %></p>
-<p><%= @book.author %></p>
-<p><%= @book.category %></p>
-<p><%= @book.description %></p>
-<p><%= @book.delivery_price %></p>
-<%= cl_image_tag @book.photo.key, height: 300, width: 400, crop: :fill %>
+<div class="container">
+  <div class="py-5">
+    <div class="row">
+      <h1 class="pink"><%= @book.title %></h1>
+      <p class="fw-bold fst-italic fs-5"><%= @book.author %></p>
+      <div class="col-md-4">
+        <figure>
+          <%= cl_image_tag @book.photo.key, height: 300, width: 400, crop: :fill %>
+        </figure>
+        <div class="manage-book d-flex justify-content-center">
+          <% if @book.user == current_user %>
+            <%= link_to edit_book_path(@book), class: "btn btn-outline-primary" do %>
+              <i class="fa-solid fa-pen"></i>
+            <% end %>
+            <%= link_to books_path, class: "btn btn-outline-danger ms-2", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+             <i class="fa-solid fa-trash-can"></i>
+             <% end %>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="wrapper-content pt-2 pb-4">
+          <span class="badge bg-blue-light"><%= @book.category %></span>
+          <p><%= @book.description %></p>
+        </div>
+        <hr>
+        <p class="py-3 d-flex justify-content-between"><span class="label-price">Envoi:  </span><span class="price-delivery">à partir de <%= @book.delivery_price %> €</span></p>
+      </div>
+      <div class="col-md-4">
+        <div class="row">
+          <h2>Louez ce livre</h2>
+          <%= simple_form_for [@book, @reservation], html: { data: { controller: 'flatpickr'} } do |f| %>
+            <div class="col">
+
+              <%= f.input :starting_date,
+                          wrapper_html: { class: "mb-4" },
+                          label: "A partir de (dd/mm/yyyy)",
+                          as: :string,
+                          input_html: { data: { flatpickr_target: 'startDateInput' } } %>
+            </div>
+            <div class="col">
+              <%= f.input :end_date,
+                          wrapper_html: { class: "mb-4" },
+                          label: "Jusqu'au (dd/mm/yyyy)",
+                          as: :string,
+                          input_html: { data: { flatpickr_target: 'endDateInput' } } %>
+            </div>
+            <%= f.submit 'Lire maintenant', class: 'btn btn-primary' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

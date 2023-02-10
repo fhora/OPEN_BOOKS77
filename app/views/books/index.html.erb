@@ -1,7 +1,17 @@
 <div class="banner" id="index">
   <div class="container">
-    <h1>Voici nos livres toutes categories</h1>
-    <p>Semper viverra nam libero justo laoreet sit amet cursus. Et egestas quis ipsum suspendisse ultrices gravida. Aenean euismod elementum nisi quis eleifend quam adipiscing vitae proin. Lorem ipsum dolor sit amet.</p>
+    <h1 class="text-center">Trouvez ici votre bonheur et lisez librement</h1>
+    <p class="text-center">Vous pouvez réaliser une recherche par titre auteur ou catégorie. Pas de limite pour rever</p>
+
+    <!-- Barre de recherche -->
+    <%= form_with url: books_path, method: :get, class: "d-flex flex-column align-items-center" do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Trouver un livre"
+      %>
+	    <%= submit_tag "Chercher", class: "btn btn-lg btn-primary mt-4" %>
+    <% end %>
   </div>
 </div>
 

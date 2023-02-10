@@ -2,7 +2,7 @@
   <div class="container">
     <%= link_to root_path, class: "navbar-brand" do %>
       <%# <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
-      OpenBooks
+      <i class="fa-solid fa-book-open-reader"></i> OpenBooks77
     <% end %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,13 +13,17 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item active">
-            <%= link_to "Publier une offre", new_book_path, class: "nav-link" %>
+            <%= link_to "Ajouter un livre", new_book_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Voir les livres", books_path, class: "nav-link" %>
+            <%= link_to "Voir tous les livres", books_path, class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <div class="d-flex align-items-center" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
+              <p class="avatar d-flex align-items-center justify-content-center bg-light mb-0">
+                <span class="fs-3 color-secondary text-uppercase"><%= current_user.username[0] %></span>
+              </p>
+            </div>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Mon compte", "#", class: "dropdown-item border-bottom p-2" %>
               <%= link_to "Déconnexion", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
